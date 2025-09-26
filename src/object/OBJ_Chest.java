@@ -1,22 +1,24 @@
 package object;
 
+import entity.Entity;
 import main.GamePanel;
 
-public class OBJ_Chest extends SuperObject{
+public class OBJ_Chest extends Entity{
     
-    GamePanel gp;
 
     public OBJ_Chest(GamePanel gp){ 
 
-        this.gp = gp;
+        super(gp);
 
         name = "Chest";
-        try {
-            image1 = javax.imageio.ImageIO.read(getClass().getResourceAsStream("/objects/chest_1.png"));
-            uTool.scaleImage(image1,gp.tileSize, gp.tileSize);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        down1 = setup("/objects/chest_1.png");
         collision = true;
+
+        solidArea.x = 0;
+        solidArea.y = 16;
+        solidArea.width = 48;
+        solidArea.height = 32;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
     }
 }

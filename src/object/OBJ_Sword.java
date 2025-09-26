@@ -1,21 +1,22 @@
 package object;
 
+import entity.Entity;
 import main.GamePanel;
 
-public class OBJ_Sword extends SuperObject {
-
-    GamePanel gp;
+public class OBJ_Sword extends Entity {
 
     public OBJ_Sword(GamePanel gp) {
 
-        this.gp = gp;
+        super(gp);
 
         name = "Sword";
-        try {
-            image1 = javax.imageio.ImageIO.read(getClass().getResourceAsStream("/objects/sword_1.png"));
-            uTool.scaleImage(image1,gp.tileSize, gp.tileSize);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        down1 = setup("/objects/sword_1.png");
+
+        solidArea.x = 0;
+        solidArea.y = 16;
+        solidArea.width = 48;
+        solidArea.height = 32;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
     }
 }

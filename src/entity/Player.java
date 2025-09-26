@@ -1,6 +1,8 @@
 package entity;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -66,7 +68,8 @@ public class Player extends Entity{
 
     public void update (){
         
-        if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){ //não alternar enquanto parado
+        if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true ||
+         keyH.rightPressed == true || keyH.actionPressed == true ){ //não alternar enquanto parado
             if(keyH.upPressed == true)      {direction="up";    }
             if(keyH.downPressed == true)    {direction="down";  }
             if(keyH.leftPressed == true)    {direction="left";  }
@@ -84,14 +87,15 @@ public class Player extends Entity{
             int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex); //interact with NPC
 
+            //CHEK ENEMY COLISION
+            int enemyIndex = gp.cChecker.checkEntity(this, gp.enemy);
+            contactEnemy(enemyIndex);
+
             //CHECK EVENT
             gp.eHandler.checkEvent();
 
-            keyH.actionPressed = false;
-
-
             //IF COLLISION IS FALSE, PLAYER CAN MOVE
-            if(collisionOn == false){
+            if(collisionOn == false && keyH.actionPressed == false){
                 switch (direction) {
                     case "up":      worldY = worldY - speed; break;
                     case "down":    worldY = worldY + speed; break;
@@ -99,6 +103,9 @@ public class Player extends Entity{
                     case "right":   worldX = worldX + speed; break;  
                 }
             }
+
+            keyH.actionPressed = false;
+
 
             spriteCounter++;
             if(spriteCounter > 15){
@@ -108,6 +115,15 @@ public class Player extends Entity{
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
+            }
+        }
+        
+        //Invincibility
+        if(invincible == true){
+            invincibleCounter++;
+            if(invincibleCounter>60){
+                invincible = false;
+                invincibleCounter = 0;
             }
         }
     }
@@ -158,11 +174,26 @@ public class Player extends Entity{
                 }
                 break;
         }
+
+        if(invincible == true){
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f)); //30% opacity when invinvible
+        }
         g2.drawImage(image, screenX, screenY, null);
-        //HITBOX DEBUG
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
+
+
+        //DEBUG
         if (keyH.debug == true){
+            //HITBOX
             g2.setColor(Color.red);
             g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+
+            //INVINCIBILITY
+            g2.setFont(new Font("Arial",Font.PLAIN,26));
+            g2.setColor(Color.WHITE);
+            g2.drawString("Invincible:" + invincibleCounter, 10, 400);
+
         }
     }
 
@@ -175,5 +206,12 @@ public class Player extends Entity{
         }
     }
 
-
+    public void contactEnemy(int i){
+        if(i != 999){
+            if(invincible == false){
+                life -= 1;
+                invincible = true;
+            }
+        }
+    }
 }
