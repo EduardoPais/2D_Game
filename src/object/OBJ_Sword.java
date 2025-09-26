@@ -12,8 +12,8 @@ public class OBJ_Sword extends SuperObject {
 
         name = "Sword";
         try {
-            image = javax.imageio.ImageIO.read(getClass().getResourceAsStream("/objects/sword_1.png"));
-            uTool.scaleImage(image,gp.tileSize, gp.tileSize);
+            image1 = javax.imageio.ImageIO.read(getClass().getResourceAsStream("/objects/sword_1.png"));
+            uTool.scaleImage(image1,gp.tileSize, gp.tileSize);
         } catch (Exception e) {
             e.printStackTrace();
         }

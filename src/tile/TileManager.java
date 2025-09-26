@@ -38,6 +38,7 @@ public class TileManager {
         setup(7, "/tiles/sky.png", true);
         setup(8, "/tiles/ceiling_ramp_left.png", true);
         setup(9, "/tiles/ceiling_ramp_right.png", true);
+        setup(10, "/tiles/bench.png", false);
     }
 
     public void setup(int index, String imagePath, boolean collision){

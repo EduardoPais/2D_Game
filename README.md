@@ -1,18 +1,33 @@
-## Getting Started
+# 2D Game (Work in Progress)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A Java project where I’m learning game development by creating a **Metroidvania-style 2D platformer**.  
+The project is still in an early stage of development.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## About
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+The goal of this project is to build a side-scrolling game inspired by Hollow Knight and other Metroidvania titles.  
+Right now, it has the basics of movement, collision, and rendering, but more features will be added over time.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+---
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Current Features
 
-## Dependency Management
+- Basic game loop  
+- Player movement with keyboard controls  
+- Collision with map tiles and objects  
+- Rendering of sprites and backgrounds  
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
+
+## Planned Features
+
+- Platforming mechanics (jumping, double jump, wall climb, dash)  
+- Enemies with simple AI  
+- Health and damage system  
+- Collectibles / power-ups  
+- Map exploration with locked areas (Metroidvania style)  
+- Sound and background music  
+- Menus (start screen, pause, game over)  
+
