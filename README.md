@@ -18,6 +18,7 @@ Right now, it has the basics of movement, collision, and rendering, but more fea
 - Player movement with keyboard controls  
 - Collision with map tiles and objects  
 - Rendering of sprites and backgrounds  
+<<<<<<< HEAD
 
 ---
 
@@ -31,3 +32,17 @@ Right now, it has the basics of movement, collision, and rendering, but more fea
 - Sound and background music  
 - Menus (start screen, pause, game over)  
 
+=======
+
+---
+
+## Planned Features
+
+- Platforming mechanics (jumping, double jump, wall climb, dash)  
+- Enemies with simple AI  
+- Health and damage system  
+- Collectibles / power-ups  
+- Map exploration with locked areas (Metroidvania style)  
+- Sound and background music  
+- Menus (start screen, pause, game over)  
+>>>>>>> 7a981df8f28caad35a9fc5bb78feab5c248b5d33
